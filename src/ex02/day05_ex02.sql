@@ -1,0 +1,8 @@
+CREATE INDEX idx_person_name ON person USING btree (UPPER(name));
+
+SET ENABLE_SEQSCAN TO OFF;
+
+EXPLAIN ANALYZE
+SELECT *
+FROM person p
+WHERE UPPER(p.name) = 'KATE';
